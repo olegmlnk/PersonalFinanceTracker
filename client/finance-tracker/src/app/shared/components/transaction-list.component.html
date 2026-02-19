@@ -1,0 +1,41 @@
+<section class="transaction-list">
+  <div class="transaction-list__empty" *ngIf="transactions.length === 0">
+    No transactions found.
+  </div>
+
+  <div class="transaction-list__table-wrapper" *ngIf="transactions.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Note</th>
+          <th class="amount">Amount</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions; trackBy: trackById">
+          <td>{{ transaction.date | date: 'mediumDate' }}</td>
+          <td class="transaction-list__type">{{ transaction.type }}</td>
+          <td>{{ getCategoryLabel(transaction) }}</td>
+          <td>{{ transaction.note || '-' }}</td>
+          <td
+            class="transaction-list__amount"
+            [class.transaction-list__amount--income]="transaction.type === 'income'"
+            [class.transaction-list__amount--expense]="transaction.type === 'expense'"
+          >
+            {{ transaction.amount | currency }}
+          </td>
+          <td class="actions">
+            <button type="button" class="action-link" (click)="onEdit(transaction)">Edit</button>
+            <button type="button" class="action-link action-link--danger" (click)="onDelete(transaction.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

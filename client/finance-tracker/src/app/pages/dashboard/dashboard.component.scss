@@ -1,0 +1,73 @@
+.dashboard {
+  display: grid;
+  gap: 1rem;
+}
+
+.dashboard__header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.dashboard__header p {
+  margin: 0.35rem 0 0;
+  color: #475569;
+}
+
+.dashboard__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.summary-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.summary-card p {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.summary-card--income p {
+  color: #047857;
+}
+
+.summary-card--expense p {
+  color: #b91c1c;
+}
+
+.summary-card--balance p {
+  color: #1d4ed8;
+}
+
+.dashboard__chart-placeholder {
+  border-radius: 0.75rem;
+  border: 1px dashed #94a3b8;
+  background: #f8fafc;
+  padding: 1.25rem;
+}
+
+.dashboard__chart-placeholder h3 {
+  margin: 0;
+}
+
+.dashboard__chart-placeholder p {
+  margin: 0.5rem 0 0;
+  color: #475569;
+}
+
+@media (max-width: 840px) {
+  .dashboard__cards {
+    grid-template-columns: 1fr;
+  }
+}

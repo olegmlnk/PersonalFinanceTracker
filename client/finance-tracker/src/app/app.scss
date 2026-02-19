@@ -1,0 +1,50 @@
+.app-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.app-shell__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.app-shell__brand h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.app-shell__brand p {
+  margin: 0.35rem 0 0;
+  color: #475569;
+}
+
+.app-shell__nav {
+  display: flex;
+  gap: 0.5rem;
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 0.25rem;
+}
+
+.app-shell__nav-link {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.app-shell__nav-link--active {
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
+}
+
+.app-shell__content {
+  min-height: calc(100vh - 12rem);
+}
