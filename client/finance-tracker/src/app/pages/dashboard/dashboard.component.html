@@ -1,0 +1,28 @@
+<section class="dashboard">
+  <header class="dashboard__header">
+    <h2>Dashboard</h2>
+    <p>Overview of your current financial position.</p>
+  </header>
+
+  <div class="dashboard__cards" *ngIf="summary$ | async as summary">
+    <article class="summary-card summary-card--income">
+      <h3>Total Income</h3>
+      <p>{{ summary.totalIncome | currency }}</p>
+    </article>
+
+    <article class="summary-card summary-card--expense">
+      <h3>Total Expenses</h3>
+      <p>{{ summary.totalExpense | currency }}</p>
+    </article>
+
+    <article class="summary-card summary-card--balance">
+      <h3>Balance</h3>
+      <p>{{ summary.balance | currency }}</p>
+    </article>
+  </div>
+
+  <section class="dashboard__chart-placeholder">
+    <h3>Spending Trend</h3>
+    <p>Chart placeholder for future analytics.</p>
+  </section>
+</section>

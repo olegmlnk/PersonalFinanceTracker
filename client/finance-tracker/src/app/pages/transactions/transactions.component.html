@@ -1,0 +1,52 @@
+<section class="transactions-page">
+  <header class="transactions-page__header">
+    <div>
+      <h2>Transactions</h2>
+      <p>Review, filter, and manage your financial activity.</p>
+    </div>
+    <button type="button" (click)="openCreateForm()">Add transaction</button>
+  </header>
+
+  <form class="transactions-page__filters" [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <label>
+      <span>From</span>
+      <input type="date" formControlName="from" />
+    </label>
+
+    <label>
+      <span>To</span>
+      <input type="date" formControlName="to" />
+    </label>
+
+    <label>
+      <span>Type</span>
+      <select formControlName="type">
+        <option value="">All types</option>
+        <option *ngFor="let type of typeOptions" [value]="type">
+          {{ type | titlecase }}
+        </option>
+      </select>
+    </label>
+
+    <div class="transactions-page__filter-actions">
+      <button type="submit">Apply</button>
+      <button type="button" class="secondary" (click)="clearFilters()">Clear</button>
+    </div>
+  </form>
+
+  <section class="transactions-page__form-panel" *ngIf="isFormOpen">
+    <h3>{{ editingTransaction ? 'Edit transaction' : 'Add transaction' }}</h3>
+    <app-transaction-form
+      [transaction]="editingTransaction"
+      [categories]="(categories$ | async) ?? []"
+      (submitted)="onFormSubmit($event)"
+      (cancelled)="closeForm()"
+    ></app-transaction-form>
+  </section>
+
+  <app-transaction-list
+    [transactions]="(transactions$ | async) ?? []"
+    (edit)="onEditTransaction($event)"
+    (delete)="onDeleteTransaction($event)"
+  ></app-transaction-list>
+</section>

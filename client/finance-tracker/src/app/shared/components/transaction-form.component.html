@@ -1,0 +1,48 @@
+<form class="transaction-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="transaction-form__grid">
+    <label class="field">
+      <span>Date</span>
+      <input type="date" formControlName="date" />
+    </label>
+
+    <label class="field">
+      <span>Type</span>
+      <select formControlName="type">
+        <option *ngFor="let type of typeOptions" [ngValue]="type">
+          {{ type | titlecase }}
+        </option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>Category</span>
+      <select formControlName="categoryId">
+        <option [ngValue]="0">Select category</option>
+        <option *ngFor="let category of filteredCategories" [ngValue]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      <small *ngIf="form.controls.categoryId.touched && form.controls.categoryId.invalid">
+        Category is required.
+      </small>
+    </label>
+
+    <label class="field">
+      <span>Amount</span>
+      <input type="number" formControlName="amount" min="0.01" step="0.01" />
+      <small *ngIf="form.controls.amount.touched && form.controls.amount.invalid">
+        Amount must be greater than 0.
+      </small>
+    </label>
+
+    <label class="field field--full">
+      <span>Note</span>
+      <textarea formControlName="note" rows="3" placeholder="Optional note"></textarea>
+    </label>
+  </div>
+
+  <div class="transaction-form__actions">
+    <button type="submit" [disabled]="form.invalid">Save</button>
+    <button type="button" class="secondary" (click)="onCancel()">Cancel</button>
+  </div>
+</form>
