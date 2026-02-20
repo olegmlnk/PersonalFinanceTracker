@@ -1,0 +1,27 @@
+@FinanceTracker.WebApi_HostAddress = https://localhost:7061
+
+GET {{FinanceTracker.WebApi_HostAddress}}/api/categories
+Accept: application/json
+
+###
+
+GET {{FinanceTracker.WebApi_HostAddress}}/api/transactions?type=expense&from=2026-01-01&to=2026-12-31
+Accept: application/json
+
+###
+
+POST {{FinanceTracker.WebApi_HostAddress}}/api/transactions
+Content-Type: application/json
+
+{
+  "date": "2026-02-01",
+  "type": "expense",
+  "categoryId": "00000000-0000-0000-0000-000000000001",
+  "amount": 20.50,
+  "note": "Lunch"
+}
+
+###
+
+GET {{FinanceTracker.WebApi_HostAddress}}/api/summary
+Accept: application/json
